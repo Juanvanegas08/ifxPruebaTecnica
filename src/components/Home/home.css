@@ -1,0 +1,52 @@
+.containerHome {
+    height: 100vh;
+    background: linear-gradient(116deg, #152235 2.24%, #0B2C5E 57.43%, #000 92.95%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+  
+  .headerHome {
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    background-color: #0B2C5E;
+    border-radius: 10px;
+  }
+  
+  .headerHome h5 {
+    font-weight: bold;
+  }
+  
+  .cardContainer {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .cardContainer img {
+    width: 450px;
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+  }
+  
+  .cardContainer img:hover {
+    transform: scale(1.05); 
+  }
+  
+  .contentContainer {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    color: white;
+  }
+  
+  .contentContainer div {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
