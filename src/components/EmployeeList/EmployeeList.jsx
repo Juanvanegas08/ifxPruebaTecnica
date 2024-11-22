@@ -4,56 +4,50 @@ import {
   createEmployee,
   updateEmployee,
   deleteEmployee,
-  getEntities, 
+  getEntities,
 } from "../../services/api";
 
-
-import "../login/login.css";
-
+import "../EmployeeList/EmployeeList.css"; 
 
 const EmployeeList = () => {
-  const [employees, setEmployees] = useState([]); 
-  const [entities, setEntities] = useState([]); 
+  const [employees, setEmployees] = useState([]);
+  const [entities, setEntities] = useState([]);
   const [newEmployee, setNewEmployee] = useState({
     name: "",
     position: "",
     entityId: "",
-  }); 
-  const [editEmployee, setEditEmployee] = useState(null); 
-  const [errorMessage, setErrorMessage] = useState(""); 
+  });
+  const [editEmployee, setEditEmployee] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
+  // Paginación
+  const [currentPage, setCurrentPage] = useState(1);
+  const recordsPerPage = 4; // Mostrar solo 4 registros por página
 
   useEffect(() => {
     fetchEmployees();
     fetchEntities();
   }, []);
 
-  // Función para obtener empleados
   const fetchEmployees = async () => {
     try {
       const response = await getEmployees();
       setEmployees(response.data);
-      console.log("Empleados obtenidos:", response.data);
-      setErrorMessage(""); 
+      setErrorMessage("");
     } catch (error) {
-      console.error("Error al obtener empleados:", error);
       setErrorMessage("Error al cargar los empleados.");
     }
   };
 
-  // Función para obtener entidades
   const fetchEntities = async () => {
     try {
       const response = await getEntities();
       setEntities(response.data);
-      console.log("Entidades obtenidas:", response.data);
     } catch (error) {
-      console.error("Error al obtener entidades:", error);
       setErrorMessage("Error al cargar las entidades.");
     }
   };
 
-  // Función para añadir un empleado
   const handleAddEmployee = async () => {
     try {
       if (!newEmployee.entityId) {
@@ -61,64 +55,59 @@ const EmployeeList = () => {
         return;
       }
       await createEmployee(newEmployee);
-      setNewEmployee({ name: "", position: "", entityId: "" }); // Reiniciar los campos
-      fetchEmployees(); 
+      setNewEmployee({ name: "", position: "", entityId: "" });
+      fetchEmployees();
     } catch (error) {
-      console.error("Error al añadir empleado:", error.response?.data || error.message);
-      setErrorMessage(
-        `Error al añadir empleado: ${
-          error.response?.data?.error || "Error desconocido"
-        }`
-      );
+      setErrorMessage("Error al añadir empleado.");
     }
   };
 
-  // Función para editar un empleado
   const handleEditEmployee = async () => {
     try {
       if (!editEmployee.entityId) {
         setErrorMessage("Debe seleccionar una entidad.");
         return;
-      } 
+      }
       await updateEmployee(editEmployee.id, editEmployee);
       setEditEmployee(null);
       fetchEmployees();
     } catch (error) {
-      console.error("Error al editar empleado:", error.response?.data || error.message);
-      setErrorMessage(
-        `Error al editar empleado: ${
-          error.response?.data?.error || "Error desconocido"
-        }`
-      );
+      setErrorMessage("Error al editar empleado.");
     }
   };
 
-  // Función para eliminar un empleado
   const handleDeleteEmployee = async (id) => {
     try {
-      console.log("ID del empleado a eliminar:", id);
-      if (!id) {
-        setErrorMessage("El ID del empleado no es válido.");
-        return;
-      }
       await deleteEmployee(id);
       fetchEmployees();
     } catch (error) {
-      console.error("Error al eliminar empleado:", error.response?.data || error.message);
-      setErrorMessage(
-        `Error al eliminar empleado: ${
-          error.response?.data?.error || "Error desconocido"
-        }`
-      );
+      setErrorMessage("Error al eliminar empleado.");
     }
   };
 
+  // Lógica para paginación: calcular los registros de la página actual
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentEmployees = employees.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  // Cambiar la página
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Calcular el número de páginas
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(employees.length / recordsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
-    <div>
-      <h2>Listado de Empleados</h2>
-      <div>
+    <div >
+
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      <div >
         <h3>{editEmployee ? "Editar Empleado" : "Añadir Empleado"}</h3>
-        <input
+      <div >
+      <input
+      className="inputsEmployee"
           type="text"
           placeholder="Nombre"
           value={editEmployee ? editEmployee.name : newEmployee.name}
@@ -129,6 +118,7 @@ const EmployeeList = () => {
           }
         />
         <input
+        className="inputsEmployee"
           type="text"
           placeholder="Posición"
           value={editEmployee ? editEmployee.position : newEmployee.position}
@@ -138,7 +128,7 @@ const EmployeeList = () => {
               : setNewEmployee({ ...newEmployee, position: e.target.value })
           }
         />
-        <select
+        <select className="inputsEmployee"
           value={editEmployee ? editEmployee.entityId : newEmployee.entityId || ""}
           onChange={(e) =>
             editEmployee
@@ -156,12 +146,12 @@ const EmployeeList = () => {
         <button onClick={editEmployee ? handleEditEmployee : handleAddEmployee}>
           {editEmployee ? "Guardar Cambios" : "Añadir"}
         </button>
-        {editEmployee && (
-          <button onClick={() => setEditEmployee(null)}>Cancelar</button>
-        )}
       </div>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      <table border="1">
+        {editEmployee && <button onClick={() => setEditEmployee(null)}>Cancelar</button>}
+      </div>
+
+      {/* Tabla de empleados */}
+      <table>
         <thead>
           <tr>
             <th>Nombre</th>
@@ -171,7 +161,7 @@ const EmployeeList = () => {
           </tr>
         </thead>
         <tbody>
-          {employees.map((employee) => (
+          {currentEmployees.map((employee) => (
             <tr key={employee.id}>
               <td>{employee.name}</td>
               <td>{employee.position}</td>
@@ -185,7 +175,14 @@ const EmployeeList = () => {
         </tbody>
       </table>
 
-     
+      {/* Paginación */}
+      <div className="pagination">
+        {pageNumbers.map((number) => (
+          <button key={number} onClick={() => paginate(number)}>
+            {number}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

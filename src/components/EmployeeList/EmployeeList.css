@@ -1,0 +1,97 @@
+/* Contenedor general */
+.table-container {
+  width: 80%; 
+  margin: 20px auto; 
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Estilo de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2c2c2c; 
+  color: #fff; 
+}
+
+th, td {
+  padding: 8px 12px; 
+  text-align: center;
+  font-size: 12px;
+}
+
+th {
+  background-color: #0b3d60; 
+  font-weight: bold;
+  font-size: 12px; 
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #0A3254; 
+}
+
+tbody tr:nth-child(even) {
+  background-color: #023B73; 
+}
+
+tbody tr:hover {
+  background: rgba(78, 141, 236, 0.35);
+}
+
+
+button {
+  background-color: #007BFF; 
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px; 
+  transition: background-color 0.3s ease;
+  margin-right: 10px; 
+}
+
+button:hover {
+  background-color: #0056b3; 
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Estilo de la paginación */
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.pagination button:focus {
+  outline: none;
+}
+
+
+.inputsEmployee{
+  margin: 5px;
+  margin-bottom: 20px;
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}

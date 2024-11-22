@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vaneg\\Desktop\\EntitiesManagementAPI\\EntitiesManagementAPI\\EntitiesManagementAPI.csproj": {}
+    "C:\\Users\\vaneg\\Desktop\\git\\ifxPruebaTecnica\\backend\\EntitiesManagementAPI\\EntitiesManagementAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vaneg\\Desktop\\EntitiesManagementAPI\\EntitiesManagementAPI\\EntitiesManagementAPI.csproj": {
+    "C:\\Users\\vaneg\\Desktop\\git\\ifxPruebaTecnica\\backend\\EntitiesManagementAPI\\EntitiesManagementAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vaneg\\Desktop\\EntitiesManagementAPI\\EntitiesManagementAPI\\EntitiesManagementAPI.csproj",
+        "projectUniqueName": "C:\\Users\\vaneg\\Desktop\\git\\ifxPruebaTecnica\\backend\\EntitiesManagementAPI\\EntitiesManagementAPI.csproj",
         "projectName": "EntitiesManagementAPI",
-        "projectPath": "C:\\Users\\vaneg\\Desktop\\EntitiesManagementAPI\\EntitiesManagementAPI\\EntitiesManagementAPI.csproj",
+        "projectPath": "C:\\Users\\vaneg\\Desktop\\git\\ifxPruebaTecnica\\backend\\EntitiesManagementAPI\\EntitiesManagementAPI.csproj",
         "packagesPath": "C:\\Users\\vaneg\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vaneg\\Desktop\\EntitiesManagementAPI\\EntitiesManagementAPI\\obj\\",
+        "outputPath": "C:\\Users\\vaneg\\Desktop\\git\\ifxPruebaTecnica\\backend\\EntitiesManagementAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vaneg\\AppData\\Roaming\\NuGet\\NuGet.Config"
