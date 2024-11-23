@@ -63,23 +63,28 @@ Actualiza el archivo appsettings.json en el backend con la cadena de conexión d
 ## 2. Ejecutar el backend (.NET API)
 Abre una terminal y navega al directorio del backend:
 
-``bash
-
+```bash
 cd backend/EntitiesManagementAPI
 ```
 
 Restaura las dependencias:
-``bash
+
+```bash
 dotnet restore
 ```
+
 Compila el proyecto:
-``bash
+
+```bash
 dotnet build
 ```
+
 Ejecuta la API:
-``bash
+
+```bash
 dotnet run
 ```
+
 La API estará disponible en **http://localhost:5000** (o el puerto configurado).
 
 ## 3. Ejecutar el frontend (React)
@@ -89,12 +94,16 @@ cd <directorio_raíz>
 
 Instala las dependencias de React:
 
+```bash
 npm install
+```
+
 
 Inicia el servidor de desarrollo:
 
+```bash
 npm start
-
+```
 La aplicación estará disponible en tu navegador en http://localhost:3000.
 
 ## 4. Probar la integración
