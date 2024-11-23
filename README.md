@@ -49,6 +49,8 @@ Asegúrate de tener las siguientes herramientas instaladas en tu máquina:
 
 Crea una base de datos en MongoDB Atlas o configura una instancia local.
 
+Descargar jsonPruebaTecnica
+
 Actualiza el archivo appsettings.json en el backend con la cadena de conexión de MongoDB:
 
 
