@@ -85,7 +85,7 @@ Ejecuta la API:
 dotnet run
 ```
 
-La API estará disponible en **http://localhost:5000** (o el puerto configurado).
+La API estará disponible en **http://localhost:5026** (o el puerto configurado).
 
 ## 3. Ejecutar el frontend (React)
 Abre una nueva terminal y navega al directorio raíz del proyecto (donde está el archivo package.json):
