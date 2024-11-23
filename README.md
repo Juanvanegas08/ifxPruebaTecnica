@@ -51,30 +51,36 @@ Crea una base de datos en MongoDB Atlas o configura una instancia local.
 
 Actualiza el archivo appsettings.json en el backend con la cadena de conexión de MongoDB:
 
+
+```bash
+
 {
     "ConnectionStrings": {
         "MongoDbConnection": "mongodb+srv://<usuario>:<contraseña>@<cluster>.mongodb.net/<nombre_de_la_bd>?retryWrites=true&w=majority"
     }
 }
-
+```
 ## 2. Ejecutar el backend (.NET API)
 Abre una terminal y navega al directorio del backend:
 
+``bash
+
 cd backend/EntitiesManagementAPI
+```
 
 Restaura las dependencias:
-
+``bash
 dotnet restore
-
+```
 Compila el proyecto:
-
+``bash
 dotnet build
-
+```
 Ejecuta la API:
-
+``bash
 dotnet run
-
-La API estará disponible en http://localhost:5000 (o el puerto configurado).
+```
+La API estará disponible en **http://localhost:5000** (o el puerto configurado).
 
 ## 3. Ejecutar el frontend (React)
 Abre una nueva terminal y navega al directorio raíz del proyecto (donde está el archivo package.json):
