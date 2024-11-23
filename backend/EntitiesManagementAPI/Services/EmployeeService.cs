@@ -15,7 +15,6 @@ namespace EntitiesManagementAPI.Services
             _employees = database.GetCollection<Employee>("Employees");
         }
 
-        // Obtener todos los empleados con información de sus entidades
 
         public async Task<List<EmployeeWithEntity>> GetAllWithEntitiesAsync()
 {
@@ -30,7 +29,6 @@ namespace EntitiesManagementAPI.Services
                 }
             }
         },
-        // Realiza el $lookup
         new BsonDocument
         {
             { "$lookup", new BsonDocument
@@ -48,7 +46,7 @@ namespace EntitiesManagementAPI.Services
             { "$unwind", new BsonDocument
                 {
                     { "path", "$entity" },
-                    { "preserveNullAndEmptyArrays", true } // Permite valores nulos
+                    { "preserveNullAndEmptyArrays", true } 
                 }
             }
         },
@@ -57,10 +55,10 @@ namespace EntitiesManagementAPI.Services
         {
             { "$project", new BsonDocument
                 {
-                    { "_id", new BsonDocument("$toString", "$_id") }, // Convierte `_id` a string
+                    { "_id", new BsonDocument("$toString", "$_id") },
                     { "name", 1 },
                     { "position", 1 },
-                    { "entityId", new BsonDocument("$toString", "$entityId") }, // Convierte entityId a string
+                    { "entityId", new BsonDocument("$toString", "$entityId") }, 
                     { "entityName", new BsonDocument
                         {
                             { "$ifNull", new BsonArray { "$entity.Name", "Sin Entidad" } }

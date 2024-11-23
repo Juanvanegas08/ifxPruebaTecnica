@@ -34,12 +34,7 @@ const Home = () => {
         <div onClick={() => handleSelection('entidades')}>
           <img src={entidadImg} alt="Entidades" />
         </div>
-        <div>
-          <img src={documentacionImg} alt="Documentación" />
-        </div>
-        <div>
-          <img src={manualImg} alt="Manual de Usuario" />
-        </div>
+  
       </div>
 
       

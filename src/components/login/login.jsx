@@ -51,7 +51,7 @@ const Login = ({ onLogin }) => {
             </div>
             <button type="submit">Iniciar</button>
             <div className="forgotPassword">
-              <span>Ingresar Anónimamente</span>
+              
             </div>
           </form>
         </div>

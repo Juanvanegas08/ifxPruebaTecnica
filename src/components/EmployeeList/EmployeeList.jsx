@@ -22,7 +22,7 @@ const EmployeeList = () => {
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 4; // Mostrar solo 4 registros por página
+  const recordsPerPage = 4; 
 
   useEffect(() => {
     fetchEmployees();
